@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the Horizon - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo"><img src="31c8992d-2769-4d59-b94e-c34d25aae94b.png" alt="logo"></div>
+    <div class="title">Beyond The Horizon</div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#download">Download</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#store">Store</a></li>
+      <li><a href="login.html">Login/Register</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="auth"> <div style="max-width: 420px; width: 100%;">
+      
+      <div class="auth-card"> <h1 style="text-align: center; margin-top: 0;">Beyond the Horizon</h1>
+        <div class="tabs">
+          <div class="tab active" id="loginTab">Login</div>
+          <div class="tab" id="registerTab">Register</div>
+        </div>
+
+        <form id="loginForm" class="active">
+          <div class="field">
+            <label for="loginEmail">Email</label>
+            <input type="text" id="loginEmail" placeholder="your@email.com" required>
+          </div>
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+          </div>
+          <div class="admin-check">
+            <input type="checkbox" id="adminCheck">
+            <label for="adminCheck">Login as Admin</label>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+
+        <form id="registerForm">
+          <div class="field">
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" placeholder="your@email.com" required>
+          </div>
+          <div class="field">
+            <label for="registerUsername">Username (IGN)</label>
+            <input type="text" id="registerUsername" placeholder="Your In-Game Name" required>
+          </div>
+          <div class="field">
+            <label for="registerPhone">Phone Number (Optional)</label>
+            <input type="tel" id="registerPhone" placeholder="Your Phone Number">
+          </div>
+          <div class="field">
+            <label for="registerPassword">Password</label>
+            <input type="password"id="registerPassword" placeholder="Password" required>
+          </div>
+          <button type="submit">Register</button>
+        </form>
+
+        <p style="text-align: center; font-size: 0.9rem; opacity: 0.8; margin-top: 1.5rem;">Survive. Adapt. Escape the island.</p>
+      </div>
+      
+    </div>
+  </section>
+</main>
+
+  <script>
+    const loginTab = document.getElementById('loginTab');
+    const registerTab = document.getElementById('registerTab');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+
+    loginTab.onclick = () => {
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+    };
+
+    registerTab.onclick = () => {
+      registerTab.classList.add('active');
+      loginTab.classList.remove('active');
+      registerForm.classList.add('active');
+      loginForm.classList.remove('active');
+    };
+
+    // Register logic
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('registerEmail').value.trim();
+      const username = document.getElementById('registerUsername').value.trim();
+      const phone = document.getElementById('registerPhone').value.trim();
+      const password = document.getElementById('registerPassword').value;
+
+      if (!email || !username || !password) {
+        alert('Please fill out all required fields (Email, Username, Password).');
+        return;
+      }
+      
+      if (localStorage.getItem(email)) {
+        alert('An account with this email already exists.');
+        return;
+      }
+      
+      let isUsernameTaken = false;
+      let isPhoneTaken = false;
+      
+      for (const key in localStorage) {
+        if (!localStorage.hasOwnProperty(key) || key === 'loggedInUser' || key === 'bth_cart' || key === 'admin@bth.com' || key.startsWith('bth_')) {
+          continue;
+        }
+        
+        try {
+          const userData = JSON.parse(localStorage.getItem(key));
+          if (userData && userData.username && userData.username.toLowerCase() === username.toLowerCase()) {
+            isUsernameTaken = true;
+          }
+          if (userData && userData.phone && userData.phone === phone && phone !== "") {
+            isPhoneTaken = true;
+          }
+        } catch (err) {}
+      }
+      
+      if (isUsernameTaken) {
+        alert('This Username (IGN) is already taken. Please choose another.');
+        return;
+      }
+      
+      if (isPhoneTaken) {
+        alert('This phone number is already registered to another account.');
+        return;
+      }
+      
+      const newUserData = {
+        username: username, password: password, phone: phone,
+        isVerified: false, isSuspended: false, payment: null,
+        level: 1, inGameCurrency: 0, achievements: [], inventory: [] 
+      };
+      localStorage.setItem(email, JSON.stringify(newUserData));
+      alert('Registration successful! You can now log in.');
+      loginTab.click();
+    });
+
+    // Login logic
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const isAdminChecked = document.getElementById('adminCheck').checked;
+      
+      // List of authorized admins
+      const ADMINS = ['Admin_Fritz', 'Admin_Jericho', 'Admin_Khen', 'Admin_Den', 'Admin_James', 'admin@bth.com'];
+
+      // --- ADMIN LOGIN ---
+      // Allow login if "Login as Admin" is checked OR if the username is in the admin list
+      if (isAdminChecked || ADMINS.includes(email)) {
+        if (ADMINS.includes(email) && password === 'adminpass') {
+          localStorage.setItem('loggedInUser', email);
+          window.location.href = 'admin-dashboard.html';
+        } else {
+          alert('Invalid Admin credentials.');
+        }
+        return; 
+      }
+      
+      // --- PLAYER LOGIN ---
+      const userData = JSON.parse(localStorage.getItem(email));
+
+      if (userData && userData.password === password) {
+        if (userData.isSuspended) {
+          const reason = userData.banReason || "Violation of Terms of Service";
+          alert(`ACCOUNT SUSPENDED\nReason: ${reason}\n\nPlease contact support.`);
+          return;
+        }
+        localStorage.setItem('loggedInUser', email);
+        window.location.href = 'player-dashboard.html';
+      } else {
+        alert('Invalid email or password.');
+      }
+    });
+  </script>
+</body>
+</html>

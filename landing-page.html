@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beyond The Horizon — Prototype</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo"><img src="31c8992d-2769-4d59-b94e-c34d25aae94b.png" alt="logo"></div>
+    <div class="title">Beyond The Horizon</div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#download">Download</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#store">Store</a></li>
+      <li><a href="#support">Support</a></li> <li><a href="login.html">Login/Register</a></li> 
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="home">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Beyond The Horizon</h1>
+        <p>Survive. Explore. Endure. A low‑poly survival experience set on a deserted tropical island.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#download" id="cta-download">Download</a>
+          <a class="btn btn-ghost" href="#about">About</a>
+        </div>
+      </div>
+
+      <div class="hero-auth-panel">
+        <div class="tabs">
+          <div class="tab active" id="heroLoginTab">Login</div>
+          <div class="tab" id="heroRegisterTab">Register</div>
+        </div>
+
+        <form id="heroLoginForm" class="active">
+          <div class="field">
+            <label for="heroLoginEmail">Email or Admin Username</label>
+            <input type="text" id="heroLoginEmail" placeholder="Email or Username" required>
+          </div>
+          <div class="field">
+            <label for="heroLoginPassword">Password</label>
+            <input type="password" id="heroLoginPassword" placeholder="Password" required>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+
+        <form id="heroRegisterForm">
+          <div class="field">
+            <label for="heroRegisterEmail">Email</label>
+            <input type="email" id="heroRegisterEmail" placeholder="your@email.com" required>
+          </div>
+          <div class="field">
+            <label for="heroRegisterUsername">Username (IGN)</label>
+            <input type="text" id="heroRegisterUsername" placeholder="Your In-Game Name" required>
+          </div>
+           <div class="field">
+            <label for="heroRegisterPhone">Phone Number (Optional)</label>
+            <input type="tel" id="heroRegisterPhone" placeholder="Your Phone Number">
+          </div>
+          <div class="field">
+            <label for="heroRegisterPassword">Password</label>
+            <input type="password"id="heroRegisterPassword" placeholder="Password" required>
+          </div>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-inner">
+      <div>
+        <div class="carousel">
+          <div class="slides" id="slides">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'><rect width='100%' height='100%' fill='%23b7e0d7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='%23345'>Screenshot 1 (prototype)</text></svg>" alt="s1" style="transform:translateX(0)">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'><rect width='100%' height='100%' fill='%23e8f3ef'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='%23345'>Screenshot 2 (prototype)</text></svg>" alt="s2" style="transform:translateX(100%)">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'><rect width='100%' height='100%' fill='%23d6f0e8'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='36' fill='%23345'>Screenshot 3 (prototype)</text></svg>" alt="s3" style="transform:translateX(200%)">
+          </div>
+          <div class="carousel-controls">
+            <div>
+              <span class="dot active" data-index="0"></span>
+              <span class="dot" data-index="1"></span>
+              <span class="dot" data-index="2"></span>
+            </div>
+            <div><small class="small-muted">Swipe / drag to preview</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <h3>About The Game</h3>
+        <p>This area contains a short description and a swipable screenshot prototype. Replace the placeholder images with your real game screenshots later. The carousel supports touch drag and dots navigation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="download-card">
+      <h3>Download</h3>
+      <p>Click the button below to download the current build. Replace the button's <code>data-href</code> with your hosted .exe link (Itch.io, Google Drive, or direct host).</p>
+      <div style="display:flex;gap:12px;margin-top:14px;align-items:center">
+        <a class="btn btn-primary" id="download-button" data-href="#">Download .exe (placeholder)</a>
+        <div class="small-muted">Size: — | Platform: Windows (.exe)</div>
+      </div>
+      <hr style="margin:16px 0">
+      <div class="small-muted">System requirements (prototype): Windows 10+, 8GB RAM, Dedicated GPU recommended.</div>
+    </div>
+  </section>
+
+  <section id="store">
+    <div class="store-grid">
+      <div>
+        <h3>Weekly Shop Sale</h3>
+        <div style="margin-top:12px" class="items" id="store-items">
+          </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="team">
+    <div style="max-width:1100px;width:100%;padding:10px">
+      <h3 style="margin-bottom:12px">Team</h3>
+      <div class="team-grid">
+        <div class="card">
+          <div class="member-avatar">Member 1</div>
+          <h4 style="margin:10px 0 4px">Member 1</h4>
+          <div class="small-muted">Game Director / Designer</div>
+        </div>
+        <div class="card">
+          <div class="member-avatar">Member 2</div>
+          <h4 style="margin:10px 0 4px">Member 2</h4>
+          <div class="small-muted">Programmer</div>
+        </div>
+        <div class="card">
+          <div class="member-avatar">Member 3</div>
+          <h4 style="margin:10px 0 4px">Member 3</h4>
+          <div class="small-muted">3D Artist</div>
+        </div>
+        <div class="card">
+          <div class="member-avatar">Member 4</div>
+          <h4 style="margin:10px 0 4px">Member 4</h4>
+          <div class="small-muted">Sound / Music</div>
+        </div>
+        <div class="card">
+          <div class="member-avatar">Member 5</div>
+          <h4 style="margin:10px 0 4px">Member 5</h4>
+          <div class="small-muted">Writer / Tester</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="support" style="background: linear-gradient(180deg, var(--section-bg-2), var(--section-bg-1));">
+    <div class="card" style="max-width: 600px; width: 100%;">
+      <h3>Contact Support</h3>
+      <p class="small-muted" style="margin-bottom: 1.5rem;">Cannot log in or need to appeal a ban? Fill out the form below.</p>
+      
+      <form id="publicSupportForm">
+        <div class="form-field">
+          <label for="supportEmail">Your Email</label>
+          <input type="email" id="supportEmail" placeholder="email@example.com" required>
+        </div>
+        <div class="form-field">
+          <label for="supportSubject">Subject</label>
+          <input type="text" id="supportSubject" placeholder="e.g., Ban Appeal, Login Issue" required>
+        </div>
+        <div class="form-field">
+          <label for="supportMessage">Message</label>
+          <textarea id="supportMessage.." rows="5" placeholder="Describe your issue..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Ticket</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 Beyond The Horizon 
+</footer>
+
+<script>
+/* ================== Small JS app — Prototype ================== */
+(function(){
+  // Carousel logic (touch + dots)
+  const slides = Array.from(document.querySelectorAll('#slides img'));
+  const dots = Array.from(document.querySelectorAll('.dot'));
+  let idx = 0; function show(i){
+    idx = (i+slides.length)%slides.length;
+    slides.forEach((s,j)=> s.style.transform = `translateX(${(j-idx)*100}%)`);
+    dots.forEach((d,j)=> d.classList.toggle('active', j===idx));
+  }
+  dots.forEach(d=>d.addEventListener('click', ()=> show(parseInt(d.dataset.index))));
+  show(0);
+
+  // touch drag
+  (function(){
+    let startX=0,curX=0,dragging=false;
+    const el = document.getElementById('slides');
+    el.addEventListener('pointerdown',e=>{dragging=true;startX=e.clientX;el.setPointerCapture(e.pointerId)});
+    el.addEventListener('pointermove',e=>{ if(!dragging) return; curX = e.clientX; let dx = curX-startX; slides.forEach((s,j)=>{ s.style.transition='none'; s.style.transform = `translateX(${(j-idx)*100 + (dx/ el.clientWidth)*100}%)` }) });
+    el.addEventListener('pointerup',e=>{ if(!dragging) return; dragging=false; let dx = e.clientX - startX; slides.forEach(s=>s.style.transition='transform .45s ease'); if(dx < -80) show(idx+1); else if(dx > 80) show(idx-1); else show(idx); });
+  })();
+
+  // --- Store Showcase ---
+  const storeEl = document.getElementById('store-items');
+  const DEFAULT_ITEMS = [
+    {id:'up1',name:'Backpack Upgrade',desc:'Increase carry capacity',price:120,cat:'Upgrades'},
+    {id:'up2',name:'Sturdier Axe',desc:'Chop faster',price:200,cat:'Upgrades'},
+  ];
+  const SHOP_ITEMS = JSON.parse(localStorage.getItem('bth_shop_items') || JSON.stringify(DEFAULT_ITEMS));
+  
+  storeEl.innerHTML = ''; // Clear existing
+  if (SHOP_ITEMS && SHOP_ITEMS.length > 0) {
+      SHOP_ITEMS.forEach(it=>{
+        const div = document.createElement('div'); div.className='item card';
+        div.innerHTML = `<div class=\"item-image-placeholder\">Item Image</div><div style=\"display:flex;justify-content:space-between;align-items:center\"><div><div class=\"title\">${it.name}</div><div class=\"small-muted\">${it.cat || ''}</div></div><div style=\"text-align:right\">₱${it.price}</div></div><div class=\"small-muted\">${it.desc || ''}</div>`;
+        storeEl.appendChild(div);
+      });
+  } else {
+      storeEl.innerHTML = '<p class="small-muted">Shop items are being updated by the admin.</p>';
+  }
+  // --- End of Store ---
+
+  // --- NEW: PUBLIC SUPPORT FORM LOGIC ---
+  const supportForm = document.getElementById('publicSupportForm');
+  supportForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('supportEmail').value;
+    const subject = document.getElementById('supportSubject').value;
+    const msg = document.getElementById('supportMessage').value;
+
+    // Try to find username if user exists
+    let ign = "Guest";
+    const userData = JSON.parse(localStorage.getItem(email));
+    if (userData && userData.username) ign = userData.username;
+
+    const tickets = JSON.parse(localStorage.getItem('bth_tickets') || '[]');
+    tickets.push({
+      id: Date.now(),
+      user: email,
+      ign: ign, // Will show IGN if they have an account, or Guest
+      subject: subject,
+      message: msg,
+      status: 'open',
+      reply: null,
+      date: new Date().toISOString()
+    });
+    
+    localStorage.setItem('bth_tickets', JSON.stringify(tickets));
+    alert('Ticket Sent! Our team will review it shortly.');
+    supportForm.reset();
+  });
+
+  // --- Hero Auth Form Logic ---
+    const heroLoginTab = document.getElementById('heroLoginTab');
+    const heroRegisterTab = document.getElementById('heroRegisterTab');
+    const heroLoginForm = document.getElementById('heroLoginForm');
+    const heroRegisterForm = document.getElementById('heroRegisterForm');
+
+    heroLoginTab.onclick = () => {
+      heroLoginTab.classList.add('active');
+      heroRegisterTab.classList.remove('active');
+      heroLoginForm.classList.add('active');
+      heroRegisterForm.classList.remove('active');
+    };
+
+    heroRegisterTab.onclick = () => {
+      heroRegisterTab.classList.add('active');
+      heroLoginTab.classList.remove('active');
+      heroRegisterForm.classList.add('active');
+      heroLoginForm.classList.remove('active');
+    };
+
+    // Register logic
+    heroRegisterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('heroRegisterEmail').value.trim();
+      const username = document.getElementById('heroRegisterUsername').value.trim();
+      const phone = document.getElementById('heroRegisterPhone').value.trim();
+      const password = document.getElementById('heroRegisterPassword').value;
+
+      if (!email || !username || !password) {
+        alert('Please fill out all required fields (Email, Username, Password).');
+        return;
+      }
+      
+      if (localStorage.getItem(email)) {
+        alert('An account with this email already exists.');
+        return;
+      }
+      
+      let isUsernameTaken = false;
+      let isPhoneTaken = false;
+      
+      for (const key in localStorage) {
+        if (!localStorage.hasOwnProperty(key) || key === 'loggedInUser' || key === 'bth_cart' || key === 'admin@bth.com' || key.startsWith('bth_')) {
+          continue;
+        }
+        
+        try {
+          const userData = JSON.parse(localStorage.getItem(key));
+          if (userData && userData.username && userData.username.toLowerCase() === username.toLowerCase()) {
+            isUsernameTaken = true;
+          }
+          if (userData && userData.phone && userData.phone === phone && phone !== "") {
+            isPhoneTaken = true;
+          }
+        } catch (err) {}
+      }
+      
+      if (isUsernameTaken) {
+        alert('This Username (IGN) is already taken. Please choose another.');
+        return;
+      }
+      
+      if (isPhoneTaken) {
+        alert('This phone number is already registered to another account.');
+        return;
+      }
+      
+      const newUserData = {
+        username: username, password: password, phone: phone,
+        isVerified: false, isSuspended: false, payment: null,
+        level: 1, inGameCurrency: 0, achievements: [], inventory: [] 
+      };
+      localStorage.setItem(email, JSON.stringify(newUserData));
+      alert('Registration successful! You can now log in.');
+      heroLoginTab.click(); // Switch to login tab
+    });
+
+    // Login logic
+  heroLoginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('heroLoginEmail').value; // This is now the username input
+  const password = document.getElementById('heroLoginPassword').value;
+  
+  // --- 1. DEFINE ADMINS ---
+  const ADMINS = ['Admin_Fritz', 'Admin_Jericho', 'Admin_Khen', 'Admin_Den', 'Admin_James', 'admin@bth.com'];
+
+  // --- 2. CHECK ADMIN LOGIN ---
+  // We assume admins enter their username in the "heroLoginEmail" field
+  if (ADMINS.includes(email) && password === 'adminpass') {
+    localStorage.setItem('loggedInUser', email);
+    window.location.href = 'admin-dashboard.html';
+    return;
+  }
+  
+  // --- 3. PLAYER LOGIN ---
+  const userData = JSON.parse(localStorage.getItem(email));
+
+  if (userData && userData.password === password) {
+    if (userData.isSuspended) {
+      const reason = userData.banReason || "Violation of Terms of Service";
+      alert(`ACCOUNT SUSPENDED\nReason: ${reason}\n\nPlease contact support.`);
+      return;
+    }
+    localStorage.setItem('loggedInUser', email);
+    window.location.href = 'player-dashboard.html';
+  } else {
+    alert('Invalid credentials.');
+  }
+});
+  // --- End Hero Auth Form Logic ---
+
+
+  // make header nav links smooth
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const href = a.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault(); 
+        const target = document.querySelector(href); 
+        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  });
+
+  // download button placeholder behavior
+  document.getElementById('download-button').addEventListener('click', function(e){
+    const href = this.dataset.href; if(!href||href==='#'){ alert('Replace this button\'s data-href with your hosted .exe link (Itch.io, Drive, etc.)'); return; }
+    location.href = href;
+  });
+
+})();
+</script>
+</body>
+</html>
